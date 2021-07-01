@@ -58,7 +58,6 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array();
 
 /*
 | -------------------------------------------------------------------
@@ -89,14 +88,18 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array();
+// $autoload['helper'] = array();
+// Common
+$autoload['libraries'] = array('database','session','form_validation','user_agent','curl');
+// $autoload['libraries'] = array('form_validation','user_agent');
+$autoload['helper'] = array('url', 'file', 'form','cookie');
 
 /*
 | -------------------------------------------------------------------
 |  Auto-load Config files
 | -------------------------------------------------------------------
 | Prototype:
-|
+|0
 |	$autoload['config'] = array('config1', 'config2');
 |
 | NOTE: This item is intended for use ONLY if you have created custom
@@ -132,4 +135,5 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array();
+// $autoload['model'] = array('LoginModel','Maintenance_model','SubjectModel','QuestionModel','LogModel');
+
