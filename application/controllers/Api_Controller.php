@@ -20,11 +20,16 @@ class Api_Controller extends CI_Controller {
      *
 	 */
 
-    public function __construct() {
+	function __construct() {
+        parent::__construct();
+        
+        // Load file helper
+        $this->load->helper('url');
+		
+		$this->load->model('Home_model');
 
-        // $this->load->helper('url');
 
-    }
+	}
 
 
 	public function index()
@@ -38,27 +43,14 @@ class Api_Controller extends CI_Controller {
 
         try{
 
-            // $result = $this->db->select('*')->from('sys_items')->get()->results();
+			
+        $result = $this->Home_model->get();
 
-            // return $this->output
-            // ->set_content_type('application/json')
-            // ->set_status_header(200)
-            // ->set_output(json_encode(array(
-            //         'code' => '200',
-            //         'message' => '',
-            //         'data' =>''
-            // )));
-
-            return $this->output
+		  return $this->output
             ->set_content_type('application/json')
             ->set_status_header(200)
-            ->set_output(json_encode(array(
-                    'text' => 'Success',
-                    'type' => 'json',
-					'data' => ''
-            )));
-
-
+            ->set_output(json_encode(array("status"=>"success","message"=>"Your message here",'data' => $result)));
+       
         }catch(Exception $e){
 
             return $this->output
