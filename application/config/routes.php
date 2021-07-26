@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'Api_Controller';
 $route['api/v1/get-products'] = 'Api_Controller/getProducts';
+$route['api/v1/get-single-products/(:any)'] = 'Api_Controller/getSingleProducts/$1';
 
 
 $route['404_override'] = '';

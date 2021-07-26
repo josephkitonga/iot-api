@@ -43,7 +43,6 @@ class Api_Controller extends CI_Controller {
 
         try{
 
-			
         $result = $this->Home_model->get();
 
 		  return $this->output
@@ -62,5 +61,31 @@ class Api_Controller extends CI_Controller {
             )));
 
         }
+
     }
+
+	public function getSingleProducts($item_id)
+	{
+		
+		try{
+
+			$result = $this->Home_model->get(array('id'=>$item_id));
+	
+			  return $this->output
+				->set_content_type('application/json')
+				->set_status_header(200)
+				->set_output(json_encode(array("status"=>"success","message"=>"Your message here",'data' => $result)));
+		   
+			}catch(Exception $e){
+	
+				return $this->output
+				->set_content_type('application/json')
+				->set_status_header(500)
+				->set_output(json_encode(array(
+						'code' => '500',
+						'massage' => $e->getMessage()
+				)));
+	
+			}
+	}
 }
